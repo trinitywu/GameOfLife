@@ -62,12 +62,33 @@ public void draw () {
 
 public void keyPressed() {
   //your code here
-  if(running == true)
+  if(key == ' ')
   {
-    running = false;
-  } else
+    if(running == true)
+    {
+      running = false;
+    } else
+    {
+      running = true;
+    }
+  } else if(key == 'e')
   {
-    running = true;
+    for(int r = 0; r < NUM_ROWS; r++)
+    {
+      for(int c = 0; c < NUM_COLS; c++)
+      {
+        buttons [r][c].setLife(false);
+      }
+    }
+  } else if(key == 'r')
+  {
+    for(int r = 0; r < NUM_ROWS; r++)
+    {
+     for(int c = 0; c < NUM_COLS; c++)
+     {
+       buttons [r][c] = new Life(r, c);
+     }
+    }
   }
 }
 
@@ -188,7 +209,7 @@ public class Life {
     if (alive != true)
       fill(0);
     else 
-      fill( 150 );
+      fill(175, 209, 245);
     rect(x, y, width, height);
   }
   public boolean getLife() {
